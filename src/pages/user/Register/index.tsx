@@ -9,6 +9,8 @@ import styles from '../Login/index.less';
 import { clientRegister } from '@/services/Auth';
 import rules from '@/utils/rules';
 import { ROUTER_CLIENT } from '@/constants/router';
+import logoreflink from '@/assets/logoreflink.png'
+
 
 const Register: React.FC = () => {
 	const [submitting, setSubmitting] = useState(false);
@@ -65,13 +67,17 @@ const Register: React.FC = () => {
 		history.push(ROUTER_CLIENT.LOGIN);
 	};
 
+	const handleLoginGoogle = () =>{
+		window.location.href = `${APP_CONFIG_IP_ROOT}/auth/google`;
+	}
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.content}>
 				<div className={styles.top}>
 					<div className={styles.header}>
 						<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-							<img alt='logo' className={styles.logo} src='/logo-full.svg' />
+							<img alt='logo' className={styles.logo} src={logoreflink} />
 						</div>
 					</div>
 				</div>
@@ -193,6 +199,8 @@ const Register: React.FC = () => {
 								}}
 								size='large'
 								icon={<GoogleOutlined />}
+								onClick={handleLoginGoogle}
+
 							>
 								Đăng ký bằng Google
 							</Button>
